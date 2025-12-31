@@ -1,0 +1,11 @@
+CREATE DATABASE crud_db;
+GO
+USE crud_db;
+GO
+
+CREATE TABLE users(
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    created_at DATETIME DEFAULT GETDATE()
+);
