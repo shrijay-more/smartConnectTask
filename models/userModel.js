@@ -4,8 +4,8 @@ export const createUser = async (name, email) => {
   const pool = await poolPromise;
   return pool
     .request()
-    .input("name", sql.NVarChar, name)
-    .input("email", sql.NVarChar, email).query(`
+    .input("name", sql.VarChar, name)
+    .input("email", sql.VarChar, email).query(`
       INSERT INTO Users (name, email)
       VALUES (@name, @email)
     `);
@@ -29,8 +29,8 @@ export const updateUser = async (id, name, email) => {
   return pool
     .request()
     .input("id", sql.Int, id)
-    .input("name", sql.NVarChar, name)
-    .input("email", sql.NVarChar, email).query(`
+    .input("name", sql.VarChar, name)
+    .input("email", sql.VarChar, email).query(`
       UPDATE Users
       SET name = @name, email = @email
       WHERE id = @id
